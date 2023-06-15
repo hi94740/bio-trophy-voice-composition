@@ -7,4 +7,4 @@ jobs:
     container: hi94740/bio-trophy-so-vits-inf
     steps: 
       - name: Run inference
-        run: python inference_main.py -n test.wav -m /app/models/Faruzan/G.pth -s Faruzan -t 0 -cr 0 -c /app/models/Faruzan/config.json -cm /app/models/Faruzan/kmeans.pt -sd -40 -wf flac --f0_predictor=crepe
+        run: cd /app/so-vits-svc && python inference_main.py -n test.wav -m /app/models/Faruzan/G.pth -s Faruzan -t 0 -cr 0 -c /app/models/Faruzan/config.json -cm /app/models/Faruzan/kmeans.pt -sd -40 -wf flac --f0_predictor=crepe

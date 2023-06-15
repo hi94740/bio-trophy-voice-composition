@@ -1,0 +1,7 @@
+name: Auto Inference on Commit
+run-name: Testing inference...
+on: workflow_dispatch
+jobs:
+  inference-test-job:
+    runs-on: ubuntu-latest
+    container: hi94740/bio-trophy-so-vits-inf

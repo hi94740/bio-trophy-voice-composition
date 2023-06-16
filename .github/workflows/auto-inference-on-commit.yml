@@ -4,7 +4,14 @@ on: workflow_dispatch
 jobs:
   inference-test-job:
     runs-on: ubuntu-latest
-    container: hi94740/bio-trophy-so-vits-inf
+    container: 
+      image: hi94740/bio-trophy-so-vits-inf
+      options: --user root
     steps: 
+      - uses: actions/checkout@v3
+        with: 
+          path: ssml
+      - name: Move Ssml Folder
+        run: mv $GITHUB_WORKSPACE/ssml /ssml
       - name: Run inference
         run: cd /app/so-vits-svc && python inference_main.py -n test.wav -m /app/models/Faruzan/G.pth -s Faruzan -t 0 -cr 0 -c /app/models/Faruzan/config.json -cm /app/models/Faruzan/kmeans.pt -sd -40 -wf flac --f0_predictor=crepe
